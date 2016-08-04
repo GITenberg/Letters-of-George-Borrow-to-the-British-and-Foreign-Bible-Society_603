@@ -1,0 +1,35 @@
+_repo: Letters-of-George-Borrow-to-the-British-and-Foreign-Bible-Society_603
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Borrow, George
+    alias: Borrow, George Henry
+    birthdate: 1803
+    deathdate: 1881
+    gutenberg_agent_id: '4383'
+    url: http://www.gutenberg.org/2009/agents/4383
+    wikipedia: http://en.wikipedia.org/wiki/George_Borrow
+  editor:
+    agent_name: Darlow, T. H. (Thomas Herbert)
+    alias: Darlow, Thomas Herbert
+    birthdate: 1858
+    deathdate: 1927
+    gutenberg_agent_id: '9471'
+    url: http://www.gutenberg.org/2009/agents/9471
+description: ''
+gutenberg_issued: '1996-07-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '603'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'British and Foreign Bible Society'
+- !lcsh 'English letters'
+- !lcc 'PR'
+- !lcsh 'Authors, English -- 19th century -- Correspondence'
+- GITenberg
+title: Letters of George Borrow to the British and Foreign Bible Society
+url: http://www.gutenberg.org/ebooks/603
