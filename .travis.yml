@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: UFOX38BaJCHh8z23RWcdQk8V1AAGU3j9ZUi0fNbuRgOXR9jW0nExKWppJt7EYvSm+IfigVK7R80OoiFh6JOjvSgGelxrp/L/Vk14/QUdRIUySaSeQAYKgZaKILN9qTjOusC8bzdoo+AErqQRkf1PJ+/51I+E+vrkAz5WaprCinWRTXHzvz4JFPmPHUEQkbuD2fvjG8WBNquaBjaAXiqy5CYfLOJnrzPoUm+kyjiKHWPlSsg3FjD4zmByDfz6YrA8Lawecrqn0Zi2UIIeXR2ozwKAJEkm0NpvAwN5UtrT8y+B6MX45eCym6TXV+gsJsFdUxe5MQMf+CnKwbk1wNHMqHb6zWMBjXVj7jlColUmQoie+p3cur4TccLB6em1KtELU/wAA219oUv40BFJnubDZAnbHCNVEVgoogvBi5aLB7Yd5pMUkWk9FwIJzFqE7DD4wbmM31bZSjkQdhh+pxfXRQdgeSEqiSDKhmr1FrLeJW4TdonuptryLXNQRy3Qg28Ph5XfUADE8D/C8qUo3czCYaDp6md045hb6i5bqxKlcKta63W+a9SavNX6EtwahLNn8/NFIgyFMCxSBfEAR4jNuFIBajXAatOUM/TnbNse7BlN5vyxUD7E7u34SiumaDfGcMImzB9saH84nFoV8RKQmjGS2WUPbnbM7qwmlNmxcDI=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/Letters-of-George-Borrow-to-the-British-and-Foreign-Bible-Society_603
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
