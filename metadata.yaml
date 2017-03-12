@@ -1,5 +1,8 @@
 _repo: Letters-of-George-Borrow-to-the-British-and-Foreign-Bible-Society_603
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Borrow, George
@@ -17,6 +20,8 @@ creator:
     gutenberg_agent_id: '9471'
     url: http://www.gutenberg.org/2009/agents/9471
 description: ''
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/603#Letters-of-George-Borrow-to-the-British-and-Foreign-Bible-Society
 gutenberg_issued: '1996-07-01'
 gutenberg_type: Text
 identifiers:
